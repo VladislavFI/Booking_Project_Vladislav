@@ -26,9 +26,6 @@ class APIClient:
             raise ValueError(f"Base URL for environment {environment} is not set")
 
         self.session = requests.Session()
-        self.session.headers = {
-            'Content-Type': 'application/json'
-        }
 
     def get_base_url(self, environment: Environment) -> str:
         if environment == Environment.TEST:
