@@ -1,3 +1,5 @@
+import allure
+
 from core.clients.api_client import APIClient
 import pytest
 from datetime import datetime, timedelta
@@ -42,3 +44,11 @@ def generate_random_booking_data(booking_dates):
     }
 
     return data
+
+
+@pytest.fixture(scope='function')
+@allure.title("Создание бронирования")
+def create_booking(api_client, generate_random_booking_data):
+    response = api_client.create_booking(booking_data=generate_random_booking_data)
+    return response
+
