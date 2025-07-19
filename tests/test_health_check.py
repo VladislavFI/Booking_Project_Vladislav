@@ -14,7 +14,7 @@ def test_ping(api_client):
 @allure.story('Test server unavailability')
 def test_ping_server_unavailable(api_client, mocker):
     mocker.patch.object(api_client.session, 'get', side_effect=Exception("Server unavailable"))
-    with pytest.raises(Exception, match="Server unavilable"):
+    with pytest.raises(Exception, match="Server unavailable"):
         api_client.ping()
 
 
